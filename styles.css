@@ -938,23 +938,36 @@ section.active {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.report-section h3 {
+.report-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 1.5rem;
+}
+
+.report-header h3 {
+    margin: 0;
     color: var(--primary-color);
     font-size: 1.25rem;
 }
 
-.status-badge.paid {
-    background-color: #ecfdf5;
-    color: #059669;
+.section-actions {
+    display: flex;
+    gap: 0.5rem;
 }
 
-.status-badge.partial {
-    background-color: #fffbeb;
-    color: #d97706;
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
-.status-badge.unpaid {
-    background-color: #fef2f2;
-    color: #dc2626;
+.btn-primary:hover {
+    background-color: var(--secondary-color);
 }
