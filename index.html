@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام إدارة الأكاديمية</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard">
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>نظام إدارة الأكاديمية</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active" data-section="overview">
+                        <i class="fas fa-home"></i>
+                        <span>الرئيسية</span>
+                    </a>
+                </li>
+
+                <!-- حسابات العملاء (المتدربين) -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link">
+                        <i class="fas fa-users"></i>
+                        <span>حسابات المتدربين</span>
+                        <i class="fas fa-chevron-down arrow"></i>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="#" class="dropdown-link" data-section="student-registration">تسجيل متدرب جديد</a>
+                        <a href="#" class="dropdown-link" data-section="student-list">قائمة المتدربين</a>
+                        <a href="#" class="dropdown-link" data-section="payment-management">إدارة الدفعات</a>
+                        <a href="#" class="dropdown-link" data-section="payment-reminders">تذكيرات الدفع</a>
+                        <a href="#" class="dropdown-link" data-section="financial-reports">التقارير المالية</a>
+                    </div>
+                </li>
+
+                <!-- حسابات الموردين (المدربين) -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <span>حسابات المدربين</span>
+                        <i class="fas fa-chevron-down arrow"></i>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="#" class="dropdown-link" data-section="trainer-registration">تسجيل مدرب جديد</a>
+                        <a href="#" class="dropdown-link" data-section="trainer-list">قائمة المدربين</a>
+                        <a href="#" class="dropdown-link" data-section="trainer-contracts">العقود</a>
+                        <a href="#" class="dropdown-link" data-section="trainer-payments">الرواتب والمدفوعات</a>
+                        <a href="#" class="dropdown-link" data-section="trainer-hours">تسجيل ساعات العمل</a>
+                        <a href="#" class="dropdown-link" data-section="trainer-reports">تقارير المدربين</a>
+                    </div>
+                </li>
+
+                <!-- حسابات المصروفات -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <span>حسابات المصروفات</span>
+                        <i class="fas fa-chevron-down arrow"></i>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="#" class="dropdown-link" data-section="employee-salaries">رواتب الموظفين</a>
+                        <a href="#" class="dropdown-link" data-section="operational-expenses">مصروفات التشغيل</a>
+                        <a href="#" class="dropdown-link" data-section="educational-expenses">المستلزمات التعليمية</a>
+                        <a href="#" class="dropdown-link" data-section="marketing-expenses">مصروفات التسويق</a>
+                        <a href="#" class="dropdown-link" data-section="expense-reports">تقارير المصروفات</a>
+                    </div>
+                </li>
+
+                <!-- حسابات الخزن والبنك -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link">
+                        <i class="fas fa-cash-register"></i>
+                        <span>الخزينة والبنك</span>
+                        <i class="fas fa-chevron-down arrow"></i>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="#" class="dropdown-link" data-section="cash-register">الخزينة</a>
+                        <a href="#" class="dropdown-link" data-section="daily-transactions">المعاملات اليومية</a>
+                        <a href="#" class="dropdown-link" data-section="bank-accounts">الحسابات البنكية</a>
+                        <a href="#" class="dropdown-link" data-section="bank-transactions">المعاملات البنكية</a>
+                        <a href="#" class="dropdown-link" data-section="treasury-reports">تقارير الخزينة والبنك</a>
+                    </div>
+                </li>
+
+                <!-- إدارة المخزون -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link">
+                        <i class="fas fa-box"></i>
+                        <span>إدارة المخزون</span>
+                        <i class="fas fa-chevron-down arrow"></i>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="#" class="dropdown-link" data-section="inventory-items">المنتجات والمستلزمات</a>
+                        <a href="#" class="dropdown-link" data-section="purchase-orders">طلبات الشراء</a>
+                        <a href="#" class="dropdown-link" data-section="suppliers">الموردين</a>
+                        <a href="#" class="dropdown-link" data-section="inventory-alerts">تنبيهات المخزون</a>
+                        <a href="#" class="dropdown-link" data-section="inventory-reports">تقارير المخزون</a>
+                    </div>
+                </li>
+
+                <!-- التقارير الشاملة -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link">
+                        <i class="fas fa-chart-line"></i>
+                        <span>التقارير الشاملة</span>
+                        <i class="fas fa-chevron-down arrow"></i>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="#" class="dropdown-link" data-section="financial-summary">الملخص المالي</a>
+                        <a href="#" class="dropdown-link" data-section="revenue-expenses">الإيرادات والمصروفات</a>
+                        <a href="#" class="dropdown-link" data-section="performance-metrics">مؤشرات الأداء</a>
+                        <a href="#" class="dropdown-link" data-section="custom-reports">تقارير مخصصة</a>
+                    </div>
+                </li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <header>
+                <div class="search-bar">
+                    <input type="search" placeholder="بحث...">
+                </div>
+                <div class="user-info">
+                    <span class="notification-badge">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </span>
+                    <span class="user-name">مرحباً، المحاسب</span>
+                </div>
+            </header>
+
+            <section id="overview" class="active">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>إجمالي الإيرادات</h3>
+                        <p class="number">150,000 ر.س</p>
+                        <p class="trend positive">
+                            <i class="fas fa-arrow-up"></i>
+                            15% مقارنة بالشهر السابق
+                        </p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>عدد المتدربين النشطين</h3>
+                        <p class="number">245</p>
+                        <p class="trend positive">
+                            <i class="fas fa-arrow-up"></i>
+                            8% مقارنة بالشهر السابق
+                        </p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>معدل الحضور</h3>
+                        <p class="number">92%</p>
+                        <p class="trend negative">
+                            <i class="fas fa-arrow-down"></i>
+                            3% مقارنة بالشهر السابق
+                        </p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>المصروفات الشهرية</h3>
+                        <p class="number">45,000 ر.س</p>
+                        <p class="trend neutral">
+                            <i class="fas fa-minus"></i>
+                            ثابت مقارنة بالشهر السابق
+                        </p>
+                    </div>
+                </div>
+
+                <div class="charts-grid">
+                    <div class="chart-card">
+                        <h3>الإيرادات والمصروفات</h3>
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>توزيع المتدربين حسب الدورات</h3>
+                        <canvas id="coursesChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="quick-stats-grid">
+                    <div class="quick-stat-card">
+                        <div class="quick-stat-header">
+                            <h3>أحدث التسجيلات</h3>
+                            <a href="#" class="view-all">عرض الكل</a>
+                        </div>
+                        <div class="quick-stat-list">
+                            <div class="quick-stat-item">
+                                <div class="student-info">
+                                    <span class="name">أحمد محمد</span>
+                                    <span class="course">البرمجة المتقدمة</span>
+                                </div>
+                                <span class="date">منذ يومين</span>
+                            </div>
+                            <div class="quick-stat-item">
+                                <div class="student-info">
+                                    <span class="name">سارة أحمد</span>
+                                    <span class="course">التصميم الجرافيكي</span>
+                                </div>
+                                <span class="date">منذ 3 أيام</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="quick-stat-card">
+                        <div class="quick-stat-header">
+                            <h3>الدورات القادمة</h3>
+                            <a href="#" class="view-all">عرض الكل</a>
+                        </div>
+                        <div class="quick-stat-list">
+                            <div class="quick-stat-item">
+                                <div class="course-info">
+                                    <span class="name">تطوير تطبيقات الويب</span>
+                                    <span class="trainer">م. خالد عبدالله</span>
+                                </div>
+                                <span class="date">يبدأ في 5 أيام</span>
+                            </div>
+                            <div class="quick-stat-item">
+                                <div class="course-info">
+                                    <span class="name">التسويق الرقمي</span>
+                                    <span class="trainer">أ. محمد سعيد</span>
+                                </div>
+                                <span class="date">يبدأ في أسبوع</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section> 
+
+            <!-- Other sections remain the same -->
+            <section id="overview" class="active">
+            <!-- Previous stats and charts sections remain the same -->
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-header">
+                            <h3>المهام العاجلة</h3>
+                            <button class="add-task-btn"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <div class="tasks-list">
+                            <div class="task-item">
+                                <input type="checkbox" id="task1">
+                                <label for="task1">تجديد عقد المدرب محمد أحمد</label>
+                                <span class="due-date urgent">اليوم</span>
+                            </div>
+                            <div class="task-item">
+                                <input type="checkbox" id="task2">
+                                <label for="task2">متابعة الدفعات المتأخرة</label>
+                                <span class="due-date">غداً</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-header">
+                            <h3>تنبيهات النظام</h3>
+                        </div>
+                        <div class="alerts-list">
+                            <div class="alert-item warning">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <span>5 متدربين لم يسددوا الدفعة الشهرية</span>
+                            </div>
+                            <div class="alert-item info">
+                                <i class="fas fa-info-circle"></i>
+                                <span>تم تحديث جدول المحاضرات الأسبوعي</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-header">
+                            <h3>الجدول اليومي</h3>
+                        </div>
+                        <div class="schedule-list">
+                            <div class="schedule-item">
+                                <div class="time">09:00</div>
+                                <div class="schedule-content">
+                                    <span class="title">دورة البرمجة المتقدمة</span>
+                                    <span class="details">قاعة 3 - م. خالد</span>
+                                </div>
+                                <span class="status active">جارية</span>
+                            </div>
+                            <div class="schedule-item">
+                                <div class="time">14:00</div>
+                                <div class="schedule-content">
+                                    <span class="title">ورشة عمل التصميم</span>
+                                    <span class="details">قاعة 2 - م. سارة</span>
+                                </div>
+                                <span class="status upcoming">قادمة</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-header">
+                            <h3>المخزون المنخفض</h3>
+                        </div>
+                        <div class="inventory-alerts">
+                            <div class="inventory-item low">
+                                <span class="item-name">كتب البرمجة الأساسية</span>
+                                <span class="quantity">5 نسخ متبقية</span>
+                            </div>
+                            <div class="inventory-item critical">
+                                <span class="item-name">شهادات التخرج</span>
+                                <span class="quantity">2 نسخ متبقية</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- صفحة تسجيل المتدربين -->
+            <section id="student-registration" class="section-content">
+                <div class="section-header">
+                    <h2>تسجيل متدرب جديد</h2>
+                </div>
+                <div class="form-container">
+                    <form id="studentForm" class="registration-form">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="fullName">الاسم بالكامل</label>
+                                <input type="text" id="fullName" name="fullName" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="nationalId">الرقم القومي/الهوية</label>
+                                <input type="text" id="nationalId" name="nationalId" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">رقم الهاتف</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">البريد الإلكتروني</label>
+                                <input type="email" id="email" name="email">
+                            </div>
+                            
+                            <div class="form-group full-width">
+                                <label for="address">العنوان</label>
+                                <input type="text" id="address" name="address" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="course">نوع الدورة</label>
+                                <select id="course" name="course" required>
+                                    <option value="">اختر الدورة</option>
+                                    <option value="programming">البرمجة</option>
+                                    <option value="design">التصميم</option>
+                                    <option value="marketing">التسويق الرقمي</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="startDate">تاريخ البدء</label>
+                                <input type="date" id="startDate" name="startDate" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="endDate">تاريخ الانتهاء</label>
+                                <input type="date" id="endDate" name="endDate" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="paymentStatus">حالة الدفع</label>
+                                <select id="paymentStatus" name="paymentStatus" required>
+                                    <option value="paid">مدفوع</option>
+                                    <option value="partial">متبقي</option>
+                                    <option value="unpaid">متأخر</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group full-width">
+                                <label for="notes">ملاحظات إضافية</label>
+                                <textarea id="notes" name="notes" rows="3"></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">تسجيل المتدرب</button>
+                            <button type="reset" class="btn btn-secondary">إعادة تعيين</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- صفحة قائمة المتدربين -->
+            <section id="student-list" class="section-content">
+                <div class="section-header">
+                    <h2>قائمة المتدربين</h2>
+                    <div class="section-actions">
+                        <div class="search-container">
+                            <input type="search" id="studentSearch" placeholder="بحث عن متدرب...">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <button class="btn btn-primary" onclick="window.location.href='#student-registration'">
+                            <i class="fas fa-plus"></i>
+                            متدرب جديد
+                        </button>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>الاسم</th>
+                                <th>رقم الهاتف</th>
+                                <th>الدورة</th>
+                                <th>تاريخ البدء</th>
+                                <th>حالة الدفع</th>
+                                <th>الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>أحمد محمد علي</td>
+                                <td>0501234567</td>
+                                <td>البرمجة</td>
+                                <td>2024-03-15</td>
+                                <td><span class="status-badge paid">مدفوع</span></td>
+                                <td class="actions">
+                                    <button class="btn-icon" title="تعديل">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn-icon" title="حذف">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                    <button class="btn-icon" title="عرض التفاصيل">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <!-- Add more sample rows as needed -->
+                        </tbody>
+                    </table>
+
+                    <div class="pagination">
+                        <button class="btn-page" disabled><i class="fas fa-chevron-right"></i></button>
+                        <button class="btn-page active">1</button>
+                        <button class="btn-page">2</button>
+                        <button class="btn-page">3</button>
+                        <button class="btn-page"><i class="fas fa-chevron-left"></i></button>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- صفحة تذكيرات الدفع -->
+            <section id="payment-reminders" class="section-content">
+                <div class="section-header">
+                    <h2>تذكيرات الدفع</h2>
+                    <div class="section-actions">
+                        <button class="btn btn-primary" id="sendAllReminders">
+                            <i class="fas fa-paper-plane"></i>
+                            إرسال جميع التذكيرات
+                        </button>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>اسم المتدرب</th>
+                                <th>الدورة</th>
+                                <th>المبلغ المتأخر</th>
+                                <th>تاريخ آخر تذكير</th>
+                                <th>عدد التذكيرات</th>
+                                <th>الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>محمد أحمد</td>
+                                <td>البرمجة المتقدمة</td>
+                                <td>1500 ر.س</td>
+                                <td>2024-03-10</td>
+                                <td>2</td>
+                                <td class="actions">
+                                    <button class="btn-icon" title="إرسال تذكير">
+                                        <i class="fas fa-bell"></i>
+                                    </button>
+                                    <button class="btn-icon" title="تفاصيل المدفوعات">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- صفحة إدارة المدفوعات -->
+            <section id="payment-management" class="section-content">
+                <div class="section-header">
+                    <h2>إدارة المدفوعات</h2>
+                    <div class="section-actions">
+                        <div class="search-container">
+                            <input type="search" id="paymentSearch" placeholder="بحث في المدفوعات...">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <button class="btn btn-primary" data-section="invoice-creation">
+                            <i class="fas fa-plus"></i>
+                            فاتورة جديدة
+                        </button>
+                    </div>
+                </div>
+
+                <div class="payment-summary">
+                    <div class="summary-card">
+                        <h3>إجمالي المدفوعات</h3>
+                        <p class="amount">45,000 ر.س</p>
+                        <p class="trend positive">
+                            <i class="fas fa-arrow-up"></i>
+                            15% مقارنة بالشهر السابق
+                        </p>
+                    </div>
+                    <div class="summary-card">
+                        <h3>المبالغ المتأخرة</h3>
+                        <p class="amount">12,000 ر.س</p>
+                        <p class="trend negative">
+                            <i class="fas fa-arrow-up"></i>
+                            8% مقارنة بالشهر السابق
+                        </p>
+                    </div>
+                    <div class="summary-card">
+                        <h3>عدد الفواتير</h3>
+                        <p class="amount">156</p>
+                        <p class="trend neutral">
+                            <i class="fas fa-minus"></i>
+                            ثابت مقارنة بالشهر السابق
+                        </p>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>رقم الفاتورة</th>
+                                <th>اسم المتدرب</th>
+                                <th>المبلغ المطلوب</th>
+                                <th>المبلغ المدفوع</th>
+                                <th>المبلغ المتبقي</th>
+                                <th>حالة الدفع</th>
+                                <th>الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>INV-2024-001</td>
+                                <td>محمد أحمد</td>
+                                <td>3000 ر.س</td>
+                                <td>1500 ر.س</td>
+                                <td>1500 ر.س</td>
+                                <td><span class="status-badge partial">متبقي</span></td>
+                                <td class="actions">
+                                    <button class="btn-icon" title="تسجيل دفعة">
+                                        <i class="fas fa-money-bill"></i>
+                                    </button>
+                                    <button class="btn-icon" title="طباعة الفاتورة">
+                                        <i class="fas fa-print"></i>
+                                    </button>
+                                    <button class="btn-icon" title="إرسال تذكير">
+                                        <i class="fas fa-bell"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="pagination">
+                        <button class="btn-page" disabled><i class="fas fa-chevron-right"></i></button>
+                        <button class="btn-page active">1</button>
+                        <button class="btn-page">2</button>
+                        <button class="btn-page">3</button>
+                        <button class="btn-page"><i class="fas fa-chevron-left"></i></button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- صفحة إصدار الفواتير -->
+            <section id="invoice-creation" class="section-content">
+                <div class="section-header">
+                    <h2>إصدار فاتورة جديدة</h2>
+                </div>
+
+                <div class="form-container">
+                    <form id="invoiceForm" class="invoice-form">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="invoiceNumber">رقم الفاتورة</label>
+                                <input type="text" id="invoiceNumber" name="invoiceNumber" readonly value="INV-2024-001">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="invoiceDate">تاريخ الفاتورة</label>
+                                <input type="date" id="invoiceDate" name="invoiceDate" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="studentName">اسم المتدرب</label>
+                                <select id="studentName" name="studentName" required>
+                                    <option value="">اختر المتدرب</option>
+                                    <option value="1">محمد أحمد</option>
+                                    <option value="2">سارة خالد</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="courseName">الدورة</label>
+                                <select id="courseName" name="courseName" required>
+                                    <option value="">اختر الدورة</option>
+                                    <option value="programming">البرمجة المتقدمة</option>
+                                    <option value="design">التصميم</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="totalAmount">المبلغ المطلوب</label>
+                                <input type="number" id="totalAmount" name="totalAmount" required min="0">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="paymentMethod">طريقة الدفع</label>
+                                <select id="paymentMethod" name="paymentMethod" required>
+                                    <option value="cash">نقدي</option>
+                                    <option value="bank">تحويل بنكي</option>
+                                    <option value="card">بطاقة</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">إصدار الفاتورة</button>
+                            <button type="button" class="btn btn-secondary" id="previewInvoice">معاينة الفاتورة</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- إضافة قسم التقارير المالية -->
+<section id="financial-reports" class="section-content">
+    <div class="section-header">
+        <h2>التقارير المالية</h2>
+    </div>
+
+    <!-- تقرير حالة الطلاب المالية -->
+    <div class="report-section">
+        <h3>تقرير حالة الطلاب المالية</h3>
+        <div class="table-container">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>اسم المتدرب</th>
+                        <th>الدورة</th>
+                        <th>المبلغ المطلوب</th>
+                        <th>المبلغ المدفوع</th>
+                        <th>المبلغ المتبقي</th>
+                        <th>حالة الدفع</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>أحمد محمد</td>
+                        <td>البرمجة المتقدمة</td>
+                        <td>1500 ر.س</td>
+                        <td>1000 ر.س</td>
+                        <td>500 ر.س</td>
+                        <td><span class="status-badge partial">متبقي</span></td>
+                    </tr>
+                    <tr>
+                        <td>سارة أحمد</td>
+                        <td>التصميم الجرافيكي</td>
+                        <td>1200 ر.س</td>
+                        <td>1200 ر.س</td>
+                        <td>0 ر.س</td>
+                        <td><span class="status-badge paid">مدفوع</span></td>
+                    </tr>
+                    <!-- يمكن إضافة المزيد من الصفوف هنا -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- تقرير الطلاب المتأخرين عن السداد -->
+    <div class="report-section">
+        <h3>تقرير الطلاب المتأخرين عن السداد</h3>
+        <div class="table-container">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>اسم المتدرب</th>
+                        <th>الدورة</th>
+                        <th>المبلغ المتأخر</th>
+                        <th>تاريخ التذكير الأخير</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>أحمد محمد</td>
+                        <td>البرمجة المتقدمة</td>
+                        <td>500 ر.س</td>
+                        <td>2024-03-10</td>
+                    </tr>
+                    <tr>
+                        <td>سارة أحمد</td>
+                        <td>التصميم الجرافيكي</td>
+                        <td>0 ر.س</td>
+                        <td>2024-03-05</td>
+                    </tr>
+                    <!-- يمكن إضافة المزيد من الصفوف هنا -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- تقرير عدد الطلاب المشتركين -->
+    <div class="report-section">
+        <h3>تقرير عدد الطلاب المشتركين</h3>
+        <div class="table-container">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>اسم الدورة</th>
+                        <th>عدد الطلاب المسجلين</th>
+                        <th>تاريخ البدء</th>
+                        <th>تاريخ الانتهاء</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>البرمجة المتقدمة</td>
+                        <td>25</td>
+                        <td>2024-03-15</td>
+                        <td>2024-05-15</td>
+                    </tr>
+                    <tr>
+                        <td>التصميم الجرافيكي</td>
+                        <td>18</td>
+                        <td>2024-04-01</td>
+                        <td>2024-06-01</td>
+                    </tr>
+                    <!-- يمكن إضافة المزيد من الصفوف هنا -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
